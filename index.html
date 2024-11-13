@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IoT Smart Garden Project</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="logo">
+        <img src="./img/logo_t1.png" alt="Logo" />
+      </div>
+      <h1>SMART FARM</h1>
+      <!-- Hiển thị ngày và giờ ở góc phải -->
+      <div id="dateTime">
+        <span id="date" class="date"></span>
+        <span id="time" class="time"></span>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+      <!-- Sensor Cards -->
+      <div class="card-container">
+        <div class="card">
+          <img src="./img/soil.png" alt="Soil Moisture" />
+          <h2>Độ ẩm đất</h2>
+          <p id="soilMoistureValue">36%</p>
+          <!-- Giá trị độ ẩm đất. Đưa API MQTT để cập nhật giá trị này -->
+        </div>
+        <div class="card">
+          <img src="./img/temperature.png" alt="Temperature" />
+          <h2>Nhiệt độ</h2>
+          <p id="temperatureValue">31.3 °C</p>
+          <!-- Giá trị nhiệt độ. Đưa API MQTT để cập nhật giá trị này -->
+        </div>
+        <div class="card">
+          <img src="./img/rain.png" alt="Weather" />
+          <h2>Thời tiết</h2>
+          <p id="weatherCondition">Nắng</p>
+          <!-- Trạng thái thời tiết. Đưa API MQTT để cập nhật trạng thái này -->
+        </div>
+      </div>
+
+      <!-- Chọn chế độ -->
+      <div class="mode-selection">
+        <h2>Chọn chế độ</h2>
+        <div class="mode-buttons">
+          <button id="manualMode" class="mode-button">Thủ công</button>
+          <button id="automaticMode" class="mode-button">Tự động</button>
+          <button id="scheduleMode" class="mode-button">Lịch trình</button>
+        </div>
+      </div>
+
+      <!-- Device Control Section with Toggle Switches (for manual mode) -->
+      <div class="device-control" id="manualControl">
+        <div class="device-card">
+          <h2>MÁY BƠM</h2>
+          <label class="toggle-switch">
+            <input
+              type="checkbox"
+              id="motorSwitch"
+              onclick="toggleDevice('motor')"
+            />
+            <!-- Hàm toggleDevice sẽ gửi lệnh MQTT khi trạng thái thay đổi -->
+            <span class="slider">
+              <span class="slider-label">ON</span>
+              <span class="slider-label">OFF</span>
+            </span>
+          </label>
+          <!-- Add image for the motor -->
+          <img id="motorImage" src="./img/motor_off.png" alt="motor" />
+        </div>
+        <div class="device-card">
+          <h2>QUẠT</h2>
+          <label class="toggle-switch">
+            <input
+              type="checkbox"
+              id="fanSwitch"
+              onclick="toggleDevice('fan')"
+            />
+            <!-- Gửi lệnh MQTT khi quạt bật/tắt -->
+            <span class="slider">
+              <span class="slider-label">ON</span>
+              <span class="slider-label">OFF</span>
+            </span>
+          </label>
+          <!-- Add image for the fan -->
+          <img id="fanImage" src="./img/fan_off.png" alt="Fan" />
+        </div>
+        <div class="device-card">
+          <h2>ĐÈN</h2>
+          <label class="toggle-switch">
+            <input
+              type="checkbox"
+              id="lampSwitch"
+              onclick="toggleDevice('lamp')"
+            />
+            <!-- Gửi lệnh MQTT khi đèn bật/tắt -->
+            <span class="slider">
+              <span class="slider-label">ON</span>
+              <span class="slider-label">OFF</span>
+            </span>
+          </label>
+          <!-- Add image for the light -->
+          <img id="lampImage" src="./img/lamp_off.png" alt="lamp" />
+        </div>
+      </div>
+
+      <!-- Schedule Section -->
+      <div class="timer-section" id="timerSection">
+        <div class="timer-card">
+          <h2>Hẹn giờ máy bơm</h2>
+          <label class="time-label" for="startPumpTime">Thời gian bắt đầu:</label>
+          <input type="time" id="startPumpTime">
+          <label class="time-label" for="endPumpTime">Thời gian kết thúc:</label>
+          <input type="time" id="endPumpTime">
+          <div class="button-container">
+            <button class="save-button" onclick="saveSettings(this)">Lưu</button>
+          </div>
+          <div class="save-message"></div>
+        </div>
+        
+        <div class="timer-card">
+          <h2>Hẹn giờ quạt</h2>
+          <label class="time-label" for="startFanTime">Thời gian bắt đầu:</label>
+          <input type="time" id="startFanTime">
+          <label class="time-label" for="endFanTime">Thời gian kết thúc:</label>
+          <input type="time" id="endFanTime">
+          <div class="button-container">
+            <button class="save-button" onclick="saveSettings(this)">Lưu</button>
+          </div>
+          <div class="save-message"></div>
+        </div>
+        
+        <div class="timer-card">
+          <h2>Hẹn giờ đèn</h2>
+          <label class="time-label" for="startLightTime">Thời gian bắt đầu:</label>
+          <input type="time" id="startLightTime">
+          <label class="time-label" for="endLightTime">Thời gian kết thúc:</label>
+          <input type="time" id="endLightTime">
+          <div class="button-container">
+            <button class="save-button" onclick="saveSettings(this)">Lưu</button>
+          </div>
+          <div class="save-message"></div>
+        </div>
+      </div>
+      
+      
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

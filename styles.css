@@ -1,0 +1,313 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* thân web */
+body {
+  background-color: #eaf4e1;
+  color: #2e5234;
+}
+
+/* Header */
+.header {
+  background-color: #6b9b37;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  position: relative;
+}
+
+/* Canh chữ Trang chủ ra giữa */
+.header h1 {
+  font-size: 2rem;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Phần hiển thị ngày giờ */
+#dateTime {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-family: "Roboto", sans-serif; /* Phông chữ hiện đại */
+  font-size: 0.6rem; /* Giảm cỡ chữ */
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.9); /* Nền trắng mờ */
+  padding: 6px 12px; /* Giảm padding để khung nhỏ lại */
+  border-radius: 6px; /* Bo góc nhẹ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Căn chữ sang bên trái */
+  transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động */
+}
+
+/* Định dạng cho các phần tử ngày và giờ */
+#dateTime span {
+  margin: 3px 0; /* Giảm khoảng cách giữa các dòng */
+}
+
+#dateTime .date {
+  font-weight: bold;
+  color: #333333; /* Màu sắc cho ngày */
+  font-size: 0.9rem; /* Cỡ chữ cho ngày */
+}
+
+#dateTime .time {
+  font-weight: 600;
+  color: #333; /* Màu sắc cho giờ */
+  font-size: 0.9rem; /* Cỡ chữ cho giờ */
+}
+
+/* khung  */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* thẻ 3 cảm biến */
+.card-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  color: #558b2f;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1.5rem;
+  color: #6b9b37;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 3 chế độ */
+
+.mode-selection {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.mode-selection h2 {
+  margin-bottom: 20px;
+}
+
+.mode-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mode-button.active {
+  background-color: #03ff07;
+}
+
+/* Device Control Section */
+.device-control {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.device-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+}
+
+.device-card h2 {
+  color: #558b2f;
+  margin-bottom: 20px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 15px;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: #6b9b37;
+}
+
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(28px);
+}
+
+
+/* Các thẻ Timer */
+.timer-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Khoảng cách giữa các thẻ */
+  justify-content: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cấu trúc cho mỗi thẻ */
+.timer-card {
+  width: 280px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 25px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timer-card:hover {
+  transform: translateY(-8px); /* Hiệu ứng hover nhấc thẻ lên */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Tăng hiệu ứng đổ bóng khi hover */
+}
+
+/* Tiêu đề trong mỗi thẻ */
+.timer-card h2 {
+  font-size: 22px;
+  color: #4CAF50;
+  margin-bottom: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Định dạng nhãn thời gian */
+.time-label {
+  font-size: 14px;
+  color: #666; /* Màu chữ xám nhạt */
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Định dạng ô nhập thời gian */
+.timer-card input[type="time"] {
+  width: 130px;
+  padding: 10px;
+  font-size: 15px;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timer-card input[type="time"]:focus {
+  border-color: #4CAF50; /* Đổi màu viền khi focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Hiệu ứng viền sáng khi focus */
+}
+
+/* Save Button */
+.save-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+/* Save Message */
+.save-message {
+  margin-top: 10px;
+  font-size: 14px;
+  color: green;
+  display: none;
+}
+
+
+/* Device images size adjustment */
+.device-card img {
+  height: 80px; /* Kích thước hình ảnh */
+  margin: 0 auto 5px; /* Căn giữa và khoảng cách dưới */
+  display: block; /* Hiển thị hình ảnh dưới dạng block để có thể căn giữa */
+  margin-top: 10px;
+}
