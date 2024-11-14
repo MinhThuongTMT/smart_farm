@@ -441,6 +441,7 @@ body {
   .timer-card {
     width: 100%;
     padding: 20px;
+    box-sizing: border-box;
   }
 
   /* Footer adjustments */
