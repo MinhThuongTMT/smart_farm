@@ -441,10 +441,14 @@ body {
   .timer-card {
     width: 100%;
     padding: 20px;
-    margin-left: 70px;
     box-sizing: border-box;
   }
-
+  .schedule-active .timer-card {
+    width: 100%;
+    padding: 20px;
+    margin-left: 3px;
+    box-sizing: border-box;
+  }
   /* Footer adjustments */
   .footer {
     font-size: 16px;
