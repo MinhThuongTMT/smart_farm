@@ -10,7 +10,7 @@
     <!-- Header Section -->
     <header class="header">
       <div class="logo">
-        <img src="./img/logo_t1.png" alt="Logo" />
+        <img src="./img/t1_logo.jpg" alt="Logo" id="logo"/>
       </div>
       <h1>SMART FARM</h1>
       <!-- Hiển thị ngày và giờ ở góc phải -->
@@ -54,102 +54,123 @@
         </div>
       </div>
 
-      <!-- Device Control Section with Toggle Switches (for manual mode) -->
+      <!-- Thu cong -->
       <div class="device-control" id="manualControl">
         <div class="device-card">
           <h2>MÁY BƠM</h2>
+          <img id="motorImage" src="./img/motor_off.png" alt="motor" />
           <label class="toggle-switch">
             <input
               type="checkbox"
               id="motorSwitch"
               onclick="toggleDevice('motor')"
             />
-            <!-- Hàm toggleDevice sẽ gửi lệnh MQTT khi trạng thái thay đổi -->
+            <!-- MQTT command is sent when the state changes -->
             <span class="slider">
               <span class="slider-label">ON</span>
               <span class="slider-label">OFF</span>
             </span>
           </label>
-          <!-- Add image for the motor -->
-          <img id="motorImage" src="./img/motor_off.png" alt="motor" />
         </div>
         <div class="device-card">
           <h2>QUẠT</h2>
+          <!-- Centered image for the fan -->
+          <img id="fanImage" src="./img/fan_off.png" alt="Fan" />
+          <!-- Move toggle switch below the image -->
           <label class="toggle-switch">
             <input
               type="checkbox"
               id="fanSwitch"
               onclick="toggleDevice('fan')"
             />
-            <!-- Gửi lệnh MQTT khi quạt bật/tắt -->
+            <!-- MQTT command sent when fan is toggled -->
             <span class="slider">
               <span class="slider-label">ON</span>
               <span class="slider-label">OFF</span>
             </span>
           </label>
-          <!-- Add image for the fan -->
-          <img id="fanImage" src="./img/fan_off.png" alt="Fan" />
         </div>
         <div class="device-card">
           <h2>ĐÈN</h2>
+          <!-- Centered image for the light -->
+          <img id="lampImage" src="./img/lamp_off.png" alt="lamp" />
+          <!-- Move toggle switch below the image -->
           <label class="toggle-switch">
             <input
               type="checkbox"
               id="lampSwitch"
               onclick="toggleDevice('lamp')"
             />
-            <!-- Gửi lệnh MQTT khi đèn bật/tắt -->
+            <!-- MQTT command sent when lamp is toggled -->
             <span class="slider">
               <span class="slider-label">ON</span>
               <span class="slider-label">OFF</span>
             </span>
           </label>
-          <!-- Add image for the light -->
-          <img id="lampImage" src="./img/lamp_off.png" alt="lamp" />
         </div>
       </div>
 
-      <!-- Schedule Section -->
+      <!-- Phan Lich Trinh -->
       <div class="timer-section" id="timerSection">
         <div class="timer-card">
           <h2>Hẹn giờ máy bơm</h2>
-          <label class="time-label" for="startPumpTime">Thời gian bắt đầu:</label>
-          <input type="time" id="startPumpTime">
-          <label class="time-label" for="endPumpTime">Thời gian kết thúc:</label>
-          <input type="time" id="endPumpTime">
+          <label class="time-label" for="startPumpTime"
+            >Thời gian bắt đầu:</label
+          >
+          <input type="time" id="startPumpTime" />
+          <label class="time-label" for="endPumpTime"
+            >Thời gian kết thúc:</label
+          >
+          <input type="time" id="endPumpTime" />
           <div class="button-container">
-            <button class="save-button" onclick="saveSettings(this)">Lưu</button>
+            <button class="save-button" onclick="saveSettings(this)">
+              Lưu
+            </button>
           </div>
           <div class="save-message"></div>
         </div>
-        
+
         <div class="timer-card">
           <h2>Hẹn giờ quạt</h2>
-          <label class="time-label" for="startFanTime">Thời gian bắt đầu:</label>
-          <input type="time" id="startFanTime">
+          <label class="time-label" for="startFanTime"
+            >Thời gian bắt đầu:</label
+          >
+          <input type="time" id="startFanTime" />
           <label class="time-label" for="endFanTime">Thời gian kết thúc:</label>
-          <input type="time" id="endFanTime">
+          <input type="time" id="endFanTime" />
           <div class="button-container">
-            <button class="save-button" onclick="saveSettings(this)">Lưu</button>
+            <button class="save-button" onclick="saveSettings(this)">
+              Lưu
+            </button>
           </div>
           <div class="save-message"></div>
         </div>
-        
+
         <div class="timer-card">
           <h2>Hẹn giờ đèn</h2>
-          <label class="time-label" for="startLightTime">Thời gian bắt đầu:</label>
-          <input type="time" id="startLightTime">
-          <label class="time-label" for="endLightTime">Thời gian kết thúc:</label>
-          <input type="time" id="endLightTime">
+          <label class="time-label" for="startLightTime"
+            >Thời gian bắt đầu:</label
+          >
+          <input type="time" id="startLightTime" />
+          <label class="time-label" for="endLightTime"
+            >Thời gian kết thúc:</label
+          >
+          <input type="time" id="endLightTime" />
           <div class="button-container">
-            <button class="save-button" onclick="saveSettings(this)">Lưu</button>
+            <button class="save-button" onclick="saveSettings(this)">
+              Lưu
+            </button>
           </div>
           <div class="save-message"></div>
         </div>
       </div>
-      
-      
     </div>
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; Design by Lai Anh Thanh</p>
+      </div>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

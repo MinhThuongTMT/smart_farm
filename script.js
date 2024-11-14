@@ -1,4 +1,9 @@
-// Mode selection functionality
+// Reload page
+document.getElementById('logo').addEventListener('click', function() {
+  location.reload(); // Reloads the page
+});
+
+// Mode selection
 const manualControl = document.getElementById("manualControl");
 const timerSection = document.getElementById("timerSection");
 
@@ -16,20 +21,25 @@ function activateMode(mode) {
   document
     .querySelectorAll(".mode-button")
     .forEach((button) => button.classList.remove("active"));
+  document.body.classList.remove("schedule-active"); // Remove schedule-active class
+  document.body.classList.remove("automatic-active");
+  document.body.classList.remove("manual-active");
+
   if (mode === "manual") {
     manualControl.style.display = "flex";
     timerSection.style.display = "none";
+    document.body.classList.add("manual-active");
     document.getElementById("manualMode").classList.add("active");
   } else if (mode === "automatic") {
     manualControl.style.display = "none";
     timerSection.style.display = "none";
+    document.body.classList.add("automatic-active");
     document.getElementById("automaticMode").classList.add("active");
-    // Add MQTT or API call for automatic mode logic here
   } else if (mode === "schedule") {
     manualControl.style.display = "none";
-    timerSection.style.display = "block";
+    timerSection.style.display = "flex";
+    document.body.classList.add("schedule-active"); // Add schedule-active class
     document.getElementById("scheduleMode").classList.add("active");
-    // Add MQTT or API call for schedule mode logic here
   }
 }
 
@@ -37,7 +47,6 @@ function activateMode(mode) {
 function updateDateTime() {
   const now = new Date();
 
-  // Mảng chứa các ngày trong tuần bằng tiếng Việt
   const daysOfWeek = [
     "Chủ Nhật",
     "Thứ Hai",
@@ -111,7 +120,9 @@ function saveSettings(button) {
   const card = button.closest(".timer-card");
 
   // Get the start and end time values from the inputs
-  const startTimeInput = card.querySelector('input[type="time"]:nth-of-type(1)');
+  const startTimeInput = card.querySelector(
+    'input[type="time"]:nth-of-type(1)'
+  );
   const endTimeInput = card.querySelector('input[type="time"]:nth-of-type(2)');
 
   // Get the time values as strings
@@ -137,7 +148,8 @@ function saveSettings(button) {
     // You can also add logic here to store the times, e.g., save to a database or localStorage
   } else {
     // If the start time is not earlier than end time, display an error message
-    saveMessage.textContent = "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc!";
+    saveMessage.textContent =
+      "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc!";
     saveMessage.style.display = "block";
     saveMessage.style.color = "red";
   }
@@ -147,4 +159,3 @@ function saveSettings(button) {
     saveMessage.style.display = "none";
   }, 5000);
 }
-
